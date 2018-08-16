@@ -12,6 +12,7 @@ library(caret)
 #  Read All file in the Folder (txt,csv.....etc)
 #==================================================
 #txt
+
 Read_Folder_txt = function(Path)
 {
   setwd(Path)
@@ -21,7 +22,9 @@ Read_Folder_txt = function(Path)
   files = rbindlist(lapply(files$name, fread, header=FALSE))
   return(files)
 }
+
 #csv
+
 Read_Folder_csv = function(Path)
 {
   setwd(Path)
@@ -31,7 +34,6 @@ Read_Folder_csv = function(Path)
   files = rbindlist(lapply(files$name, fread, header=FALSE))
   return(files)
 }
-
 
 
 #=============================================================#
@@ -55,8 +57,6 @@ Get_Filename_ByConcepts = function(df)
   
   return(df)
 }
-
-
 
 
 #=============================================================#
@@ -88,7 +88,6 @@ copy = function(df)
   write.table(df, "clipboard", sep="\t", row.names = FALSE)
 }
 
-
 #=============================================================#
 # write the file in Txt format                                #
 #=============================================================#
@@ -98,7 +97,6 @@ txt = function(df,Path,HLQ,file)
   fwrite(df[,'customer_Number'],paste0(Path,HLQ,file,'.txt'),col.names=FALSE)
 }
 
-
 #=============================================================#
 # table in new arranged format                                #
 #=============================================================#
@@ -107,7 +105,6 @@ newtable = function(Base,Sampling,Customer_Group)
 {
   with(Base, table(Sampling, Customer_Group))[c(3,2,1),c(1,3,2,4)]
 }
-
 
 #=============================================================#
 # write the file in csv format  (csv)                              #
@@ -133,7 +130,6 @@ RFM = function(df,R=1,F=1,M=1)
   
   return(df)
 }
-
 
 #=============================================================#
 # Display the RFM grid                                        #
